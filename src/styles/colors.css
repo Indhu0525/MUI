@@ -1,0 +1,8 @@
+:root {
+    --bg-sidebar: hsl(220, 35%, 97%);
+    --home-bg: hsl(220deg 14.29% 89.55% / 40%);
+    --anylitics-text:#6d717b;
+    --discount-bg:white;
+    --discount-text:hsl(220, 20%, 35%);
+    --diascount-button:rgb(5, 7, 10);
+  }
