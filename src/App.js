@@ -20,8 +20,21 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import Badge from '@mui/material/Badge';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
-
+import Grid from '@mui/material/Grid';
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
 import './App.css';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+  ...theme.applyStyles('dark', {
+    backgroundColor: '#1A2027',
+  }),
+}));
 const drawerWidth = 240;
 
 const Sidebar = () => {
@@ -311,7 +324,30 @@ const Sidebar = () => {
         </Box>
    {/* main content */}
    <Box mt={2}>
-    <Box>Overview</Box>
+    <Box sx={{fontSize:'18px',fontWeight:500,mb:2}}>Overview</Box>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={3}>
+          <Item>xs=12 md=3</Item>
+        </Grid>
+        <Grid item xs={12} md={3}>
+          <Item>xs=12 md=3</Item>
+        </Grid>
+        <Grid item xs={12} md={3}>
+          <Item>xs=12 md=3</Item>
+        </Grid>
+        <Grid item xs={12} md={3}>
+          <Item>xs=12 md=3</Item>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Item>xs=12 md=6</Item>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Item>xs=12 md=6</Item>
+        </Grid>
+      </Grid>
+    </Box>
+ 
    </Box>
       </Box>
       </Box>
