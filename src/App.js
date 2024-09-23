@@ -19,11 +19,14 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import Badge from '@mui/material/Badge';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import InsightsIcon from '@mui/icons-material/Insights';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import './App.css';
+import ApexCharts from 'react-apexcharts';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -36,6 +39,52 @@ const Item = styled(Paper)(({ theme }) => ({
   }),
 }));
 const drawerWidth = 240;
+
+
+// Apex chart data
+const UsersCard = () => {
+  const chartData = {
+    series: [{
+      name: 'Users Growth',
+      data: [200,24,220,260,240,380,100,240,280,240,300,340,320,360,340,380,360,400,380,420,400,640,340,460,440,480,460,800,880,920] // Sample data points
+    }],
+    options: {
+      chart: {
+        type: 'area',
+        height: 50, // Adjust as per the card height
+        sparkline: {
+          enabled: true // Removes extra axis and gridlines
+        }
+      },
+      stroke: {
+        curve: 'smooth', // Smooths the line
+        width: 2
+      },
+      fill: {
+        type: "gradient",
+      
+      },
+      colors: ['#4caf50'], // Line color
+      tooltip: {
+        enabled: true // Hides the tooltip for a minimalist design
+      },
+  
+    }
+  };
+
+
+  return (
+    <div>
+      <ApexCharts
+        options={chartData.options}
+        series={chartData.series}
+        type="line"
+        height={50} // Adjust as needed
+      />
+    </div>
+  );
+};
+
 
 const Sidebar = () => {
   return (
@@ -325,32 +374,140 @@ const Sidebar = () => {
    {/* main content */}
    <Box mt={2}>
     <Box sx={{fontSize:'18px',fontWeight:500,mb:2}}>Overview</Box>
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={3}>
-          <Item>xs=12 md=3</Item>
-        </Grid>
-        <Grid item xs={12} md={3}>
-          <Item>xs=12 md=3</Item>
-        </Grid>
-        <Grid item xs={12} md={3}>
-          <Item>xs=12 md=3</Item>
-        </Grid>
-        <Grid item xs={12} md={3}>
-          <Item>xs=12 md=3</Item>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Item>xs=12 md=6</Item>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Item>xs=12 md=6</Item>
-        </Grid>
-      </Grid>
+    <Box sx={{ flexGrow: 1,}}>
+    <Grid container spacing={2} m="0px" width="auto">
+      {/* grid item 1 */}
+    <Grid item xs={12} md={3} sx={{pl: '0px !important', pt: '0px !important'}}>
+      <Box sx={{boxShadow: 'none !important', border: '1px solid var(--header-border)', borderRadius: 2, p: '16px'}}>
+        <Box>
+          <Box sx={{textAlign: 'left !important', fontWeight: 500, lineHeight: 1.57, mb: '0.25em', color: "var(--anylitics-text)"}}>
+            <span>Users</span>
+          </Box>
+          <Box>
+            <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
+              <Box sx={{textAlign: 'left !important', fontWeight: 500, lineHeight: 1.5, color: 'black'}}>
+                <Box sx={{fontSize: '1.5rem'}}>14k</Box>
+              </Box>
+              <Box sx={{fontSize: '0.75rem', fontWeight: 600, color: 'var(--percentage-color)', px: 1, border: '1px solid var(--percent-border)', borderRadius: 2, backgroundColor: 'var(--percent-bg)'}}>
+                <span>+25%</span>
+              </Box>
+            </Box>
+            <Box sx={{fontSize: '0.75rem', textAlign: 'left !important', lineHeight: 1.66}}>
+              <span>Last 30 days</span>
+            </Box>
+          <Box>
+             
+          <UsersCard />
+            </Box> 
+          </Box>
+        </Box>
+      </Box>
+    </Grid>
+    {/* grid item 2  */}
+  <Grid item xs={12} md={3} sx={{pt:'0px !important'}}>
+  <Box sx={{boxShadow: 'none !important', border: '1px solid var(--header-border)', borderRadius: 2, p: '16px'}}>
+        <Box>
+          <Box sx={{textAlign: 'left !important', fontWeight: 500, lineHeight: 1.57, mb: '0.25em', color: "var(--anylitics-text)"}}>
+            <span>Conversions</span>
+          </Box>
+          <Box>
+            <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
+              <Box sx={{textAlign: 'left !important', fontWeight: 500, lineHeight: 1.5, color: 'black'}}>
+                <Box sx={{fontSize: '1.5rem'}}>325</Box>
+              </Box>
+              <Box sx={{fontSize: '0.75rem', fontWeight: 600, color: 'hsl(0, 90%, 40%)', px: 1, border: '1px solid var(--percent-redborder)', borderRadius: 2, backgroundColor: 'var(--percent-redbg)'}}>
+                <span>-25%</span>
+              </Box>
+            </Box>
+            <Box sx={{fontSize: '0.75rem', textAlign: 'left !important', lineHeight: 1.66}}>
+              <span>Last 30 days</span>
+            </Box>
+          <Box>
+             
+          <UsersCard />
+            </Box> 
+          </Box>
+        </Box>
+      </Box>
+  </Grid>
+  {/* grid item 3 */}
+  <Grid item xs={12} md={3}  sx={{pt:'0px !important'}}>
+  <Box sx={{boxShadow: 'none !important', border: '1px solid var(--header-border)', borderRadius: 2, p: '16px'}}>
+        <Box>
+          <Box sx={{textAlign: 'left !important', fontWeight: 500, lineHeight: 1.57, mb: '0.25em', color: "var(--anylitics-text)"}}>
+            <span>Event Count</span>
+          </Box>
+          <Box>
+            <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
+              <Box sx={{textAlign: 'left !important', fontWeight: 500, lineHeight: 1.5, color: 'black'}}>
+                <Box sx={{fontSize: '1.5rem'}}>200k</Box>
+              </Box>
+              <Box sx={{fontSize: '0.75rem', fontWeight: 600, color: 'hsl(220, 20%, 42%)', px: 1, border: '1px solid var(--percent-grayborder)', borderRadius: 2, backgroundColor: 'var(--percent-graybg)'}}>
+                <span>+5%</span>
+              </Box>
+            </Box>
+            <Box sx={{fontSize: '0.75rem', textAlign: 'left !important', lineHeight: 1.66}}>
+              <span>Last 30 days</span>
+            </Box>
+          <Box>
+             
+          <UsersCard />
+            </Box> 
+          </Box>
+        </Box>
+      </Box>
+  </Grid>
+  {/* grid item 4 */}
+  <Grid item xs={12} md={3}  sx={{pt:'0px !important'}}>
+  <Box sx={{boxShadow: 'none !important', border: '1px solid var(--header-border)', borderRadius: 2, p: '16px',backgroundColor:'var(--percent-insightsbg)'}}>
+  <div>
+            <InsightsIcon sx={{ }} />
+            <Box sx={{ mb:'0.35em', fontWeight: 600,fontSize:'0.875rem',lineHeight:1.57 }}>Explore your data</Box>
+            <Box sx={{ mb: 1, color: "var( --discount-text)" }}>Uncover performance and visitor insights with our data wizardry.</Box>
+            <Button variant="contained" sx={{ backgroundColor: "var(--diascount-button)", borderRadius: 2, textTransform: 'none' }}>
+              Get the discount
+              <span><ChevronRightIcon sx={{display:'flex',alignItems:'center',fontSize:18,ml:1}}></ChevronRightIcon></span>
+            </Button>
+          </div>   
+      </Box>
+  </Grid>
+  {/* grid item 5 */}
+  <Grid item xs={12} md={6} sx={{pl:'0px !important'}}>
+  <Box sx={{boxShadow: 'none !important', border: '1px solid var(--header-border)', borderRadius: 2, p: '16px'}}>
+        <Box>
+          <Box sx={{textAlign: 'left !important', fontWeight: 500, lineHeight: 1.57, mb: '0.25em', color: "var(--anylitics-text)"}}>
+            <span>Sessions</span>
+          </Box>
+          <Box>
+            <Box display={'flex'} alignItems={'center'} gap={2}>
+              <Box sx={{textAlign: 'left !important', fontWeight: 500, lineHeight: 1.5, color: 'black'}}>
+                <Box sx={{fontSize: '1.5rem'}}>13,277</Box>
+              </Box>
+              <Box sx={{fontSize: '0.75rem', fontWeight: 600, color: 'var(--percentage-color)', px: 1, border: '1px solid var(--percent-border)', borderRadius: 2, backgroundColor: 'var(--percent-bg)'}}>
+                <span>+25%</span>
+              </Box>
+            </Box>
+            <Box sx={{fontSize: '0.75rem', textAlign: 'left !important', lineHeight: 1.66}}>
+              <span>Sessions per day for the last 30 days</span>
+         
+            </Box>
+          <Box>
+             
+       
+            </Box> 
+          </Box>
+        </Box>
+      </Box>
+  </Grid>
+  <Grid item xs={12} md={6}  >
+    <Item sx={{boxShadow:'none !important',border: '1px solid var(--header-border)', borderRadius: 2,p:'16px'}}>xs=12 md=6</Item>
+  </Grid>
+</Grid>
     </Box>
- 
+
    </Box>
       </Box>
-      </Box>
+    </Box>
   );
 };
 

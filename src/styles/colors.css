@@ -5,4 +5,13 @@
     --discount-bg:white;
     --discount-text:hsl(220, 20%, 35%);
     --diascount-button:rgb(5, 7, 10);
+    --header-border: hsla(220, 20%, 80%, 0.4);
+    --percentage-color:hsl(120, 59%, 30%);
+    --percent-bg:hsl(120, 80%, 98%); 
+    --percent-border:hsl(120, 75%, 87%);
+    --percent-redbg:hsl(0, 100%, 97%);
+    --percent-redborder:hsl(0, 92%, 90%);
+    --percent-grayborder:hsl(220, 20%, 88%);
+    --percent-graybg:hsl(220, 30%, 94%);
+    --percent-insightsbg:hsl(220, 35%, 97%);
   }
